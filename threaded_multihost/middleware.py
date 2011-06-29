@@ -19,3 +19,6 @@ class ThreadLocalMiddleware(object):
         set_thread_variable('request', request)
         set_current_user(request.user)
         
+    def process_response(self, request, response):
+        set_thread_variable('request', None)
+        set_current_user(None)
